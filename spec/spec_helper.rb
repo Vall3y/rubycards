@@ -7,7 +7,7 @@ Coveralls.wear!
 # Require this file using `require "spec_helper"` to ensure that it is only
 # loaded once.
 
-require 'rubycards'
+require_relative '../lib/rubycards'
 require 'json'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration

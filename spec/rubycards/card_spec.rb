@@ -58,7 +58,57 @@ describe Card do
       expect(c2).to be < c4
       expect(c2_heart).to eq c2
     end
+
+    describe 'ace' do
+      it 'should lose to two' do
+        expect(ace).to be < c2
+      end
+    end
   end
+
+  describe 'up down' do
+    let (:king) { Card.new('King','Clubs') }
+    let (:c8) { Card.new(8,'Diamonds') }
+    let (:c7) { Card.new(7,'Hearts') }
+    let (:c4) { Card.new(4,'Spades') }
+
+    describe '#up?' do
+      it 'up cards should return true' do
+        expect(king).to be_up
+        expect(c8).to be_up
+      end
+
+      it 'down cards should return false' do
+        expect(c7).to_not be_up
+        expect(c4).to_not be_up
+      end
+    end
+
+    describe '#down?' do
+      it 'down cards should return true' do
+        expect(c7).to be_down
+        expect(c4).to be_down
+      end
+
+      it 'up cards should return false' do
+        expect(king).to_not be_down
+        expect(c8).to_not be_down
+      end
+    end
+
+    describe '#type' do
+      it 'up cards should reutrn :up' do
+        expect(king.type).to eql :up
+        expect(c8.type).to eql :up
+      end
+
+      it 'down cards should return :down' do
+        expect(c7.type).to eql :down
+        expect(c4.type).to eql :down
+      end
+    end
+  end
+
 
   describe '#rank' do
     context 'face cards' do

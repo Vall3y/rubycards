@@ -32,6 +32,23 @@ describe Deck do
     end
   end
 
+  describe '#dumps and #loads' do
+    subject(:deck) do
+      deck = Deck.new(number_decks: 0)
+      deck.cards << Card.new('Q', 'Hearts')
+      deck.cards << Card.new('7', 'clubs')
+    end
+
+    let(:new_deck) do
+      dump = deck.dumps
+      Deck.loads(dump)
+    end
+
+    it 'should generate the same exact deck' do
+      expect(new_deck.count).to be 2
+    end
+  end
+
   describe '#shuffle!' do
     it 'shuffles the cards' do
       cards_before_shuffling = deck.cards.dup

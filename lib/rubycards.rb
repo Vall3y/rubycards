@@ -1,6 +1,6 @@
 $: << File.dirname(__FILE__)
 
-require 'extensions/string'
-require 'rubycards/card'
-require 'rubycards/deck'
-require 'rubycards/hand'
+require_relative 'extensions/string'
+require_relative 'rubycards/card'
+require_relative 'rubycards/deck'
+require_relative 'rubycards/hand'

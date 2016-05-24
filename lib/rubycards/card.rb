@@ -64,11 +64,24 @@ module RubyCards
 
     alias_method :inspect, :short
 
+    def up?
+      self >= 8
+    end
+
+    def down?
+      self < 8
+    end
+
+    def type
+      self >= 8 ? :up : :down
+    end
+
     # Compares the card to another.
     #
     # @param other [Card] A card to use in comparison
     # @return [Integer]
     def <=>(other)
+      return -1 if self.to_i == 14 && other.to_i == 2
       self.to_i <=> other.to_i
     end
 

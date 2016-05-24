@@ -37,6 +37,29 @@ module RubyCards
       end
     end
 
+    # Dumps into a string that can be loaded with #loads
+    def dumps
+      cards = self.map do |card|
+        {
+          rank: card.rank,
+          card: card.suit
+        }
+      end
+
+      cards.to_json
+    end
+
+    # Loads a deck that was dumped using #dumps
+    def self.loads(str)
+      card_raws = JSON.parse(str)
+
+      deck = Deck.new(number_decks: 0)
+
+      card_raws.each do |card_raw|
+        deck.cards << Card.new(card.rank, card.suit)
+      end
+    end
+
     # Shuffles the deck and returns it
     #
     # @return [Deck] The shuffled deck
